@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เกมสุ่มของรางวัล</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f172a, #1e1b4b);
+      font-family: system-ui, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(to right, #818cf8, #22d3ee);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .prize-box {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 360px;
+      margin-bottom: 2rem;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    button {
+      background: linear-gradient(to right, #6366f1, #06b6d4);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(99,102,241,0.4);
+    }
+    button:active { transform: scale(0.98); }
+    .list {
+      margin-top: 2.5rem;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>สุ่มของรางวัล</h1>
+  
+  <div class="prize-box" id="result">กดปุ่มเพื่อสุ่ม</div>
+  
+  <button onclick="spin()">สุ่มเลย!</button>
+  
+  <div class="list">
+    รางวัลที่มี:<br>
+    iPhone 16 • AirPods • ส่วนลด 50% • ขอบคุณที่ร่วมสนุก • โค้ดฟรี 100 บาท
+  </div>
+
+  <script>
+    const prizes = [
+      "iPhone 16",
+      "AirPods Pro",
+      "ส่วนลด 50%",
+      "ขอบคุณที่ร่วมสนุก",
+      "โค้ดฟรี 100 บาท",
+      "บัตรของขวัญ 500 บาท",
+      "หูฟังไร้สาย"
+    ];
+
+    function spin() {
+      const result = document.getElementById("result");
+      result.style.transform = "scale(0.9)";
+      result.style.opacity = "0.5";
+      
+      setTimeout(() => {
+        const randomIndex = Math.floor(Math.random() * prizes.length);
+        result.textContent = prizes[randomIndex];
+        result.style.transform = "scale(1)";
+        result.style.opacity = "1";
+      }, 300);
+    }
+  </script>
+</body>
+</html>
